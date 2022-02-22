@@ -1,28 +1,44 @@
 <?php
 
-use GeekBrains\Blog\Post;
-use GeekBrains\Person\Name;
-use GeekBrains\Person\Person;
-use GeekBrains\Version\Class_Phpversion;
+use Blog\User;
+use Blog\Article;
+use Blog\Comments;
 
-spl_autoload_register(function ($class) {
-    $file = str_replace(['\\', '_'], [DIRECTORY_SEPARATOR, DIRECTORY_SEPARATOR], $class) . '.php';
+require_once '../vendor/autoload.php';
 
-    if (file_exists($file)) {
-        require $file;
-    }
-});
+$admin = new User();
+echo $admin;
 
-$post = new Post(
-    new Person(
-        new Name('Иван', 'Никитин'),
-        new DateTimeImmutable()
-    ),
-    'Всем привет!'
-);
+$article = new Article();
+echo $article;
 
-print $post;
+$comment = new Comments();
+echo $comment;
 
-$showMeTheVersion = new Class_Phpversion();
-
-$showMeTheVersion->getver();
+// ############################## Код Для задания 1 ################################
+//use GeekBrains\Blog\Post;
+//use GeekBrains\Person\Name;
+//use GeekBrains\Person\Person;
+//use GeekBrains\Version\Class_Phpversion;
+//
+//spl_autoload_register(function ($class) {
+//    $file = str_replace(['\\', '_'], [DIRECTORY_SEPARATOR, DIRECTORY_SEPARATOR], $class) . '.php';
+//
+//    if (file_exists($file)) {
+//        require $file;
+//    }
+//});
+//
+//$post = new Post(
+//    new Person(
+//        new Name('Иван', 'Никитин'),
+//        new DateTimeImmutable()
+//    ),
+//    'Всем привет!'
+//);
+//
+//print $post;
+//
+//$showMeTheVersion = new Class_Phpversion();
+//$showMeTheVersion->getver();
+// ############################## end Код Для задания 1 ################################
