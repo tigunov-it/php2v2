@@ -1,17 +1,18 @@
 {
-    "name": "yuriy/public",
-    "autoload": {
-        "psr-4": {
-            "Blog\\": "src/Blog"
-        }
-    },
-    "authors": [
-        {
-            "name": "Yuriy Tigunov",
-            "email": "mail@example.com"
-        }
-    ],
-    "require": {
-        "fakerphp/faker": "^1.19"
+  "name": "yuriy/public",
+  "autoload": {
+    "psr-4": {
+      "Blog\\": "src/Blog"
     }
+  },
+  "authors": [
+    {
+      "name": "Yuriy Tigunov",
+      "email": "mail@example.com"
+    }
+  ],
+  "require": {
+    "fakerphp/faker": "^1.19",
+    "ext-pdo": "*"
+  }
 }

@@ -1,44 +1,24 @@
 <?php
 
-use Blog\User;
-use Blog\Article;
-use Blog\Comments;
+use Blog\Version\PhpVersion;
 
 require_once '../vendor/autoload.php';
 
-$admin = new User();
-echo $admin;
+$v = new PhpVersion();
 
-$article = new Article();
-echo $article;
+$v->ver();
 
-$comment = new Comments();
-echo $comment;
-
-// ############################## Код Для задания 1 ################################
-//use GeekBrains\Blog\Post;
-//use GeekBrains\Person\Name;
-//use GeekBrains\Person\Person;
-//use GeekBrains\Version\Class_Phpversion;
+//use Blog\User;
+//use Blog\Article;
+//use Blog\Comments;
 //
-//spl_autoload_register(function ($class) {
-//    $file = str_replace(['\\', '_'], [DIRECTORY_SEPARATOR, DIRECTORY_SEPARATOR], $class) . '.php';
+//require_once '../vendor/autoload.php';
 //
-//    if (file_exists($file)) {
-//        require $file;
-//    }
-//});
+//$admin = new User();
+//echo $admin;
 //
-//$post = new Post(
-//    new Person(
-//        new Name('Иван', 'Никитин'),
-//        new DateTimeImmutable()
-//    ),
-//    'Всем привет!'
-//);
+//$article = new Article();
+//echo $article;
 //
-//print $post;
-//
-//$showMeTheVersion = new Class_Phpversion();
-//$showMeTheVersion->getver();
-// ############################## end Код Для задания 1 ################################
+//$comment = new Comments();
+//echo $comment;
