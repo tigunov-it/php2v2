@@ -1,21 +1,36 @@
 <?php
 
-use Blog\User;
 use Blog\Article;
 use Blog\Comments;
+use Blog\Repositories\ArticleRepository\SqlileArticleRepository;
+use Blog\Repositories\CommentsRepository\SqliteCommentsRepository;
+use Blog\Repositories\UsersRepository\SqliteUsersRepository;
+use Blog\User;
 
 require_once '../vendor/autoload.php';
 
-switch ($argv[1]) {
-    case 'user':
-        $admin = new User();
-        echo $admin;
-        break;
-    case 'post':
-        $article = new Article();
-        echo $article;
-        break;
-    case 'comment':
-        $comment = new Comments();
-        echo $comment;
-}
+//Создаём объект подключения к SQLite
+$connection = new PDO('sqlite:' . __DIR__ . '/../src/Connections/' . '/blog.sqlite');
+
+//Создаём объект репозитория пользователей
+$usersRepository = new SqliteUsersRepository($connection);
+
+//Добавляем в репозиторий несколько пользователей
+$usersRepository->save(new User(123, 'Ivan', 'Nikitin'));
+$usersRepository->save(new User(234, 'Anna', 'Petrova'));
+
+
+//Создаем объект репозитория комментариев
+$commentsRepository = new SqliteCommentsRepository($connection);
+
+//Добавляем в репозиторий несколько комментариев
+$commentsRepository->save(new Comments(1, 123, 2, 'Первый комментарий'));
+$commentsRepository->save(new Comments(2, 234, 3, 'Второй комментарий'));
+
+
+//Создаем объект репозитория статей
+$articleRepository = new SqlileArticleRepository($connection);
+
+//Добавляем в репозиторий несколько статей
+$articleRepository->save(new Article(1, 123, 'Описание первой статьи', 'Текст первой статьи'));
+$articleRepository->save(new Article(1, 123, 'Описание второй статьи', 'Текст второй статьи'));
