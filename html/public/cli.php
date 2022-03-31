@@ -16,8 +16,8 @@ $connection = new PDO('sqlite:' . __DIR__ . '/../src/Connections/' . '/blog.sqli
 $usersRepository = new SqliteUsersRepository($connection);
 
 //Добавляем в репозиторий несколько пользователей
-$usersRepository->save(new User(123, 'Ivan', 'Nikitin'));
-$usersRepository->save(new User(234, 'Anna', 'Petrova'));
+$usersRepository->save(new User('Ivan', 'Nikitin'));
+$usersRepository->save(new User('Anna', 'Petrova'));
 
 
 //Создаем объект репозитория комментариев

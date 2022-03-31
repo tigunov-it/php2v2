@@ -4,12 +4,11 @@ namespace Blog\Repositories\UsersRepository;
 
 use Blog\User;
 use PDO;
+use PDOStatement;
 
 class SqliteUsersRepository
 {
-    public function __construct(
-        private PDO $connection
-    )
+    public function __construct(private PDO $connection)
     {
     }
 
@@ -27,4 +26,18 @@ class SqliteUsersRepository
             ':last_name' => $user->Surname(),
         ]);
     }
+
+    public function get(string $name): string
+    {
+        $sql = $this->connection->prepare("SELECT * FROM users WHERE first_name = :name");
+        $sql->execute(['name'=>$name]);
+        $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($result);
+    }
+
+    public function set()
+    {
+
+    }
+
 }
