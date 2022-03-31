@@ -1,24 +1,54 @@
 <?php
 
-use Blog\Version\PhpVersion;
+use Blog\Http\Request;
+use Blog\Http\SuccessfulResponse;
+use Blog\Repositories\UsersRepository\SqliteUsersRepository;
+use Blog\User;
 
 require_once '../vendor/autoload.php';
 
-$v = new PhpVersion();
+//Создаём объект подключения к SQLite
+try {
+    $connection = new PDO('sqlite:' . __DIR__ . '/../src/Connections/' . '/blog.sqlite');
+} catch (PDOException $e) {
+    echo 'Ошибка соединения с базой данных' . $e->getMessage();
+};
 
-$v->ver();
+//Создаём объект репозитория пользователей
+$usersRepository = new SqliteUsersRepository($connection);
 
-//use Blog\User;
-//use Blog\Article;
-//use Blog\Comments;
+// Создаём объект запроса из суперглобальных переменных
+$request = new Request($_GET, $_SERVER);
+
+$path = $request->path();
+
+$username = $request->query('username');
+var_dump($username);
+
+echo $usersRepository->get($username);
+
+
+//// Получаем данные из объекта запроса
+//$parameter = $request->query('some_parameter');
+//$header = $request->header('Some-Header');
+//$path = $request->path();
 //
-//require_once '../vendor/autoload.php';
 //
-//$admin = new User();
-//echo $admin;
+//// Создаём объект ответа
+//$response = new SuccessfulResponse([
+//    'message' => 'Hello from PHP',
+//]);
 //
-//$article = new Article();
-//echo $article;
-//
-//$comment = new Comments();
-//echo $comment;
+//// Отправляем ответ
+//$response->send();
+
+
+//Создаём объект репозитория пользователей
+//$usersRepository = new SqliteUsersRepository($connection);
+//Добавляем в репозиторий несколько пользователей
+
+//$usersRepository->save(new User('Ivan', 'Nikitin2'));
+//$usersRepository->save(new User('Anna2', 'Petrova2'));
+
+//var_dump($usersRepository->get('Ivan'));
+

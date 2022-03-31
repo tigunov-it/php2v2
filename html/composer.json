@@ -12,7 +12,8 @@
     }
   ],
   "require": {
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "ext-mbstring": "*"
   },
   "scripts": {
     "test": "phpunit tests --testdox --colors"

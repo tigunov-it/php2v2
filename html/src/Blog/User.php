@@ -10,13 +10,11 @@ class User
     protected string $surname;
 
     /**
-     * @param int $id
      * @param string $name
      * @param string $surname
      */
-    public function __construct(int $id, string $name, string $surname)
+    public function __construct(string $name, string $surname)
     {
-        $this->id = $id;
         $this->name = $name;
         $this->surname = $surname;
     }
