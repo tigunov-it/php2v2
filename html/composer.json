@@ -12,7 +12,14 @@
     }
   ],
   "require": {
-    "fakerphp/faker": "^1.19",
     "ext-pdo": "*"
+  },
+  "scripts": {
+    "test": "phpunit tests --testdox --colors"
+  },
+
+  "require-dev": {
+    "fakerphp/faker": "^1.19",
+    "phpunit/phpunit": "^9.5"
   }
 }
